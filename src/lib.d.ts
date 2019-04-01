@@ -7,6 +7,7 @@ interface LicenseEntry {
 
 interface PackageJson {
     productName?: string;
+    version?: string;
     description?: string;
     homepage?: string;
     license?: string | LicenseEntry;
@@ -18,6 +19,7 @@ interface PackageJson {
 interface AboutWindowInfo {
     icon_path: string;
     product_name?: string;
+    product_version?: string;
     copyright?: string;
     homepage?: string;
     description?: string;

@@ -2,12 +2,13 @@ import { ipcRenderer, remote, shell } from 'electron';
 
 ipcRenderer.on('about-window:info', (_: any, info: AboutWindowInfo) => {
     const app_name = info.product_name || remote.app.getName();
+    const app_version = info.product_version || remote.app.getVersion();
     const open_home = () => shell.openExternal(info.homepage);
     const content = info.use_inner_html ? 'innerHTML' : 'innerText';
     document.title = `About ${app_name}`;
 
     const title_elem = document.querySelector('.title') as HTMLHeadingElement;
-    title_elem.innerText = `${app_name} ${remote.app.getVersion()}`;
+    title_elem.innerText = `${app_name} ${app_version}`;
 
     if (info.homepage) {
         title_elem.addEventListener('click', open_home);
